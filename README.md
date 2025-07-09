@@ -7,17 +7,19 @@
 
 ## 📦 Repository Structure
 
-#.
-#├── backend/ # 백엔드 애플리케이션 (예: Golang)
-#├── frontend/ # 프론트엔드 애플리케이션 (예: React)
-#├── database/ # DB 초기화 및 설정
-#├── manifests/ # Kubernetes 배포 YAML 파일
-#│ ├── backend/
-#│ ├── frontend/
-#│ ├── database/
-#│ └── kustomization.yaml
-#├── .github/workflows/ # GitHub Actions CI/CD 설정
-#└── README.md
+```
+.
+├── backend/ # 백엔드 애플리케이션 (예: Golang)
+├── frontend/ # 프론트엔드 애플리케이션 (예: React)
+├── database/ # DB 초기화 및 설정
+├── manifests/ # Kubernetes 배포 YAML 파일
+│ ├── backend/
+│ ├── frontend/
+│ ├── database/
+│ └── kustomization.yaml
+├── .github/workflows/ # GitHub Actions CI/CD 설정
+└── README.md
+```
 
 ### 주의: manifests 디렉토리 내의 모든 yaml 파일들의 ECR Repo 경로내에 Team를 수정해주세요!!!
 
