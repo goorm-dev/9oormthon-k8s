@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: 837126493345.dkr.ecr.ap-northeast-2.amazonaws.com/<team-number>/backend:latest
+        image: 837126493345.dkr.ecr.ap-northeast-2.amazonaws.com/<team-number>/backend:latest #fixme
         ports:
         - containerPort: 8080
         volumeMounts:
