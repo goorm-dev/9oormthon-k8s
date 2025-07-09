@@ -9,15 +9,28 @@
 
 ```
 .
-├── backend/ # 백엔드 애플리케이션 (예: Golang)
-├── frontend/ # 프론트엔드 애플리케이션 (예: React)
-├── database/ # DB 초기화 및 설정
-├── manifests/ # Kubernetes 배포 YAML 파일
-│ ├── backend/
-│ ├── frontend/
-│ ├── database/
+├── database/ # Database 배포 YAML 파일
+│ ├── mariadb/
+│ │ ├── base/
+│ │ ├── overlay/
+│ │ │ ├── kustomization.yaml # ArgoCD가 바라봐야하는 파일
+│ ├── mongodb/
+│ │ ├── base/
+│ │ ├── overlay/
+│ │ │ ├── kustomization.yaml # ArgoCD가 바라봐야하는 파일
+│ ├── mysql/
+│ │ ├── base/
+│ │ ├── overlay/
+│ │ │ ├── kustomization.yaml # ArgoCD가 바라봐야하는 파일
+│ ├── redis/
+│ │ ├── base/
+│ │ ├── overlay/
+│ │ │ ├── kustomization.yaml # ArgoCD가 바라봐야하는 파일
+├── k8s/ # Kubernetes 배포 YAML 파일
+│ ├── backend.yaml
+│ ├── frontend.yaml
+│ ├── ingress.yaml
 │ └── kustomization.yaml
-├── .github/workflows/ # GitHub Actions CI/CD 설정
 └── README.md
 ```
 
