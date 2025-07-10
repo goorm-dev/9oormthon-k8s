@@ -51,8 +51,8 @@
 
 ## 🛠 Prerequisites
 
-- Kubernetes 클러스터 (EKS, GKE, Minikube 등)
-- `kubectl` / `kustomize` 설치
+- Kubernetes 클러스터 (EKS)
+- `kubectl` 설치
 - Docker 및 ECR 접근 권한
 - GitHub Actions 권한 및 Secrets 설정
 
@@ -61,5 +61,5 @@
 ## ⚙️ Deployment
 
 ```bash
-cd manifests/
-kustomize build . | kubectl apply -f -
+cd k8s/
+kubectl apply -f -
