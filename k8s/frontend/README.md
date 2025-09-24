@@ -43,7 +43,7 @@ frontend/
 
 > ex. goormthon-1, goormthon-2 등
 
-**backend.yaml**
+**frontend.yaml**
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
