@@ -1,15 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: <goormthon-n> #FIXME:
+
 resources:
   - frontend.yaml
-  - backend.yaml
   - ingress.yaml
 
 configMapGenerator:
-  - name: react-frontend-config #fix me
+  - name: frontend-config
     files:
       - config.json=config/frontend-config.json
-  - name: java-backend-config #fix me
-    files:
-      - config.json=config/backend-config.json
 
 generatorOptions:
   disableNameSuffixHash: true

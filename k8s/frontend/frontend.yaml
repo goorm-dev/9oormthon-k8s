@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: java-backend
+  name: frontend-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: java-backend
+      app: frontend
   template:
     metadata:
       labels:
-        app: java-backend
+        app: frontend
     spec:
       containers:
-      - name: backend
-        image: 837126493345.dkr.ecr.ap-northeast-2.amazonaws.com/<team-number>/backend:latest #fixme
+      - name: frontend
+        image: 837126493345.dkr.ecr.ap-northeast-2.amazonaws.com/<goormthon-n>/frontend:latest #FIXME:
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
         volumeMounts:
         - name: config-volume
           mountPath: /app/config
@@ -24,15 +24,15 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: java-backend-config
+          name: frontend-config
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: java-backend
+  name: frontend-service
 spec:
   selector:
-    app: java-backend
+    app: frontend
   ports:
   - port: 80
-    targetPort: 8080
+    targetPort: 3000

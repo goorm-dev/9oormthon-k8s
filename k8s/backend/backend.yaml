@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: react-frontend
+  name: backend-deployment
 spec:
-  replicas: 1
+  replicas: 1 #FIXME: replica 수 조정
   selector:
     matchLabels:
-      app: react-frontend
+      app: backend
   template:
     metadata:
       labels:
-        app: react-frontend
+        app: backend
     spec:
       containers:
-      - name: frontend
-        image: 837126493345.dkr.ecr.ap-northeast-2.amazonaws.com/<team-number>/frontend:latest #fixme
+      - name: backend
+        image: 837126493345.dkr.ecr.ap-northeast-2.amazonaws.com/<goormthon-n>/backend:latest #FIXME: 
         ports:
-        - containerPort: 3000
+        - containerPort: 8080
         volumeMounts:
         - name: config-volume
           mountPath: /app/config
@@ -24,15 +24,15 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: react-frontend-config
+          name: backend-config
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: react-frontend
+  name: backend-service
 spec:
   selector:
-    app: react-frontend
+    app: backend
   ports:
   - port: 80
-    targetPort: 3000
+    targetPort: 8080
