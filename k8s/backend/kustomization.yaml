@@ -5,7 +5,7 @@ namespace: <GOORMTHON_TEAM_NUMBER> #FIXME:
 
 resources:
   - backend.yaml
-  - ingress.yaml # API 호출 방식이 Server-Side인 경우 주석 해제
+  # - ingress.yaml # API 호출 방식이 Client-Side인 경우 주석 해제
 
 configMapGenerator:
   - name: backend-config

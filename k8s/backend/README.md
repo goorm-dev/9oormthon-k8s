@@ -32,7 +32,10 @@ backend/
 - backend-config: JSON 형태의 설정 파일을 Pod 내부 /app/config 경로에 마운트
 
 ### Ingress
+
 - 외부 접근: <GOORMTHON_TEAM_NUMBER>.goorm.training/api/* 경로로 백엔드 API 접근 가능
+
+- 기본적으로 주석 처리되어 있으며, Client-Side 호출 시에만 활성화
 
 <br>
 
@@ -108,12 +111,12 @@ kubectl rollout restart deployment backend-deployment -n <GOORMTHON_TEAM_NUMBER>
 ```
 
 ### Ingress 설정
-Server-Side 렌더링을 사용하는 경우 kustomization.yaml에서 ingress.yaml을 주석 처리하세요
+Client-Side 렌더링을 사용하는 경우 kustomization.yaml에서 ingress.yaml을 주석 해제하세요
 
 ```yaml
 resources:
   - backend.yaml
-  # - ingress.yaml  # Server-Side 렌더링 시 주석 처리
+  - ingress.yaml  # Client-Side 렌더링 시 주석 해제
 ```
 
 ### Port 매핑
