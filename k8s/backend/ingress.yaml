@@ -6,7 +6,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: <GOORMTHON_TEAM_NUMBER>.goorm.training #FIXME:
+  - host: <goormthon-n>.goorm.training #FIXME:
     http:
       paths:
       - path: /api

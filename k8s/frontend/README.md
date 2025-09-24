@@ -33,13 +33,15 @@ frontend/
 - frontend-config: JSON 형태의 설정 파일을 Pod 내부 /app/config 경로에 마운트
 
 ### Ingress
-- 외부 접근: <GOORMTHON_TEAM_NUMBER>.goorm.training/* 경로로 프론트엔드 애플리케이션 접근 가능
+- 외부 접근: <goormthon-n>.goorm.training/* 경로로 프론트엔드 애플리케이션 접근 가능
 
 <br>
 
 ## ⚙️ 커스터마이징 방법
 ### 1. 구름톤 팀 번호 설정
-다음 파일에서 `<GOORMTHON_TEAM_NUMBER>`를 실제 팀 번호로 변경하세요
+다음 파일에서 `<goormthon-n>`를 실제 팀 번호로 변경하세요
+
+> ex. goormthon-1, goormthon-2 등
 
 **backend.yaml**
 ```yaml
@@ -52,7 +54,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: 837126493345.dkr.ecr.ap-northeast-2.amazonaws.com/<GOORMTHON_TEAM_NUMBER>/frontend:latest #FIXME:
+        image: 837126493345.dkr.ecr.ap-northeast-2.amazonaws.com/<goormthon-n>/frontend:latest #FIXME:
 ```
 
 **ingress.yaml**
@@ -65,12 +67,12 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: <GOORMTHON_TEAM_NUMBER>.goorm.training #FIXME:
+  - host: <goormthon-n>.goorm.training #FIXME:
 ```
 
 **kustomization.yaml**
 ```yaml
-namespace: <GOORMTHON_TEAM_NUMBER> #FIXME:
+namespace: <goormthon-n> #FIXME:
 ```
 
 ### 2. 프론트엔드 설정 변경
@@ -105,7 +107,7 @@ spec:
 ConfigMap을 수정한 후에는 Deployment를 재시작하여 변경 사항이 반영되도록 해야 합니다.
 
 ```bash
-kubectl rollout restart deployment frontend-deployment -n <GOORMTHON_TEAM_NUMBER>
+kubectl rollout restart deployment frontend-deployment -n <goormthon-n>
 ```
 
 ### Port 매핑

@@ -33,7 +33,7 @@ backend/
 
 ### Ingress
 
-- 외부 접근: <GOORMTHON_TEAM_NUMBER>.goorm.training/api/* 경로로 백엔드 API 접근 가능
+- 외부 접근: <goormthon-n>.goorm.training/api/* 경로로 백엔드 API 접근 가능
 
 - 기본적으로 주석 처리되어 있으며, Client-Side 호출 시에만 활성화
 
@@ -41,7 +41,10 @@ backend/
 
 ## ⚙️ 커스터마이징 방법
 ### 1. 구름톤 팀 번호 설정
-다음 파일에서 `<GOORMTHON_TEAM_NUMBER>`를 실제 팀 번호로 변경하세요
+다음 파일에서 `<goormthon-n>`를 실제 팀 번호로 변경하세요
+
+> ex. goormthon-1, goormthon-2 등
+
 
 **backend.yaml**
 ```yaml
@@ -54,7 +57,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: 837126493345.dkr.ecr.ap-northeast-2.amazonaws.com/<GOORMTHON_TEAM_NUMBER>/backend:latest #FIXME: 
+        image: 837126493345.dkr.ecr.ap-northeast-2.amazonaws.com/<goormthon-n>/backend:latest #FIXME: 
 ```
 
 **ingress.yaml**
@@ -67,12 +70,12 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: <GOORMTHON_TEAM_NUMBER>.goorm.training #FIXME:
+  - host: <goormthon-n>.goorm.training #FIXME:
 ```
 
 **kustomization.yaml**
 ```yaml
-namespace: <GOORMTHON_TEAM_NUMBER> #FIXME:
+namespace: <goormthon-n> #FIXME:
 ```
 
 ### 2. 환경 변수 설정
@@ -107,7 +110,7 @@ spec:
 ConfigMap을 수정한 후에는 Deployment를 재시작하여 변경 사항이 반영되도록 해야 합니다.
 
 ```bash
-kubectl rollout restart deployment backend-deployment -n <GOORMTHON_TEAM_NUMBER>
+kubectl rollout restart deployment backend-deployment -n <goormthon-n>
 ```
 
 ### Ingress 설정
