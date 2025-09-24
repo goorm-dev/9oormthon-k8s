@@ -43,16 +43,16 @@ patches:
 ### 2. MongoDB 클러스터 내부 호스트 주소
 MongoDB는 StatefulSet으로 구성되어 있으므로, 아래와 같은 내부 DNS 주소를 통해 Pod에 접근할 수 있습니다:
 ```
-mongodb-0.mongodb.<team-name>.svc.cluster.local:27017
+mongodb-0.mongodb.<goormthon-n>.svc.cluster.local:27017
 ```
 - `mongodb-0`: MongoDB Pod 이름
 - `mongodb`: MongoDB 서비스 이름
-- `<team-name>`: MongoDB를 배포한 네임스페이스 이름 <예시: goorm>
+- `<goormthon-n>`: MongoDB를 배포한 네임스페이스 이름 <예시: goorm>
 - `svc.cluster.local`: Kubernetes 클러스터 내부 DNS 도메인
     - 이 주소는 MongoDB 내부 명령어, Job 등을 통해 collection 생성 시에도 사용됩니다.
 예시:
 ```js
-mongosh "mongodb://myuser:mypassword@mongodb-0.mongodb.<team-name>.svc.cluster.local:27017/admin"
+mongosh "mongodb://myuser:mypassword@mongodb-0.mongodb.<goormthon-n>.svc.cluster.local:27017/admin"
 ```
 ---
 ## 🛠️ (선택) 데이터 커스텀 Job
@@ -78,7 +78,7 @@ mongosh "mongodb://myuser:mypassword@mongodb-0.mongodb.<team-name>.svc.cluster.l
 #             - /bin/bash
 #             - -c
 #             - |
-#               mongosh "mongodb://$(MONGO_USERNAME):$(MONGO_PASSWORD)@mongodb-0.mongodb.<team-name>.svc.cluster.local:27017/admin" \
+#               mongosh "mongodb://$(MONGO_USERNAME):$(MONGO_PASSWORD)@mongodb-0.mongodb.<goormthon-n>.svc.cluster.local:27017/admin" \
 #               --eval 'db = db.getSiblingDB("myapp"); db.createCollection("init_check"); print("✅ myapp DB and collection created.");'
 ```
 > - 📝 이 Job은 DB 생성과 직접적인 관계는 없습니다. 운영 중 필요한 작업에만 사용하세요.  

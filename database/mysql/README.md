@@ -57,12 +57,12 @@ configMapGenerator:
 - StatefulSet 기반으로 구성되어 있어, Pod가 삭제되더라도 데이터는 유지됩니다.
 - 데이터를 초기화하거나 삭제하고 싶을 경우 다음 PVC 삭제 명령어를 사용할 수 있습니다:
 ```sh
-kubectl delete pvc -l app=mysql -n <team-name>
+kubectl delete pvc -l app=mysql -n <goormthon-n>
 ```
 - ❗ 이 명령은 데이터를 완전히 삭제합니다. 신중히 실행하세요.
 ---
 ## 📦 배포 방법
-1. `overlays/kustomization.yaml` 파일에서 `<team-name>`을 현재 팀 네임스페이스로 변경합니다.
+1. `overlays/kustomization.yaml` 파일에서 `<goormthon-n>`을 현재 팀 네임스페이스로 변경합니다.
 2. 아래 명령어로 배포합니다:
 ```sh
 kubectl apply -k database/mysql/overlays

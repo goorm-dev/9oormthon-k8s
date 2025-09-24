@@ -22,7 +22,7 @@ patches:
           # MONGO_INITDB_DATABASE: myapp
   
   # colloction 생성 시 아래 코드를 참고하여 사용하세요
-  # host: mongodb-0.mongodb.<team-name>.svc.cluster.local:27017 
+  # host: mongodb-0.mongodb.<goormthon-n>.svc.cluster.local:27017 
 
   # - target:
   #     kind: Job
@@ -41,5 +41,5 @@ patches:
   #             - /bin/bash
   #             - -c
   #             - |
-  #               mongosh "mongodb://$(MONGO_USERNAME):$(MONGO_PASSWORD)@mongodb-0.mongodb.<team-name>.svc.cluster.local:27017/admin" \
+  #               mongosh "mongodb://$(MONGO_USERNAME):$(MONGO_PASSWORD)@mongodb-0.mongodb.<goormthon-n>.svc.cluster.local:27017/admin" \
   #               --eval 'db = db.getSiblingDB("myapp"); db.createCollection("init_check"); print("✅ myapp DB and collection created.");'

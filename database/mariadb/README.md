@@ -66,7 +66,7 @@ configMapGenerator:
 - 데이터를 지우거나, 초기화 하기 위해서는 Database Server 내부에서 진행해야 합니다.
 - 또는 PVC를 삭제하고, 새로 생성하는 방법도 있습니다.
     ```sh
-    kubectl delete pvc mariadb-data-mariadb-0 -n <team-name>
+    kubectl delete pvc mariadb-data-mariadb-0 -n <goormthon-n>
     ``` 
     ❗ 이 명령은 데이터를 완전히 삭제합니다. 신중히 실행하세요.
 ---
