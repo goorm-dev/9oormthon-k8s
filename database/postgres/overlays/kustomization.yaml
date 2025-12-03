@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../base
+
+# namespace: goormthon-1 # fix me
+# ArgoCD 사용 시 비워도 됩니다. 대신 ArgoCD 에서 namespace를 지정해 주세요.
+
+images:
+  - name: postgres
+    newTag: "15" # FIX ME 원하는 버전으로 수정하세요. 
+
+patches:
+  - target:
+      kind: Secret
+      name: postgres-secret
+    patch: |
+      - op: replace
+        path: /stringData
+        value:
+          POSTGRES_PASSWORD: yourpassword
+          POSTGRES_USER: postgres

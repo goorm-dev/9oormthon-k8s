@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  labels:
+    app: postgres
+spec:
+  serviceName: postgres
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+              name: postgres
+          envFrom:
+            - secretRef:
+                name: postgres-secret
+          volumeMounts:
+            # 데이터 디렉토리
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+              subPath: data
+
+            # init.sql 자동 실행 (최초 1회)
+            - name: postgres-initdb
+              mountPath: /docker-entrypoint-initdb.d
+
+            # PostgreSQL 설정 파일
+            - name: postgres-config
+              mountPath: /etc/postgresql
+
+          # ===== HEALTH CHECKS =====
+          readinessProbe:
+            exec:
+              command: ["pg_isready", "-U", "postgres"]
+            initialDelaySeconds: 10
+            periodSeconds: 5
+
+          livenessProbe:
+            exec:
+              command: ["pg_isready", "-U", "postgres"]
+            initialDelaySeconds: 20
+            periodSeconds: 10
+      volumes:
+        # init.sql
+        - name: postgres-initdb
+          configMap:
+            name: postgres-initdb
+        # postgresql.conf / pg_hba.conf
+        - name: postgres-config
+          configMap:
+            name: postgresql-config
+
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: "gp2"
+        resources:
+          requests:
+            storage: 10Gi

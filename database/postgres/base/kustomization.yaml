@@ -1,0 +1,22 @@
+resources:
+  - service.yaml
+  - statefulset.yaml
+  - secret.yaml
+
+configMapGenerator:
+  - name: postgres-initdb
+    files:
+      - init.sql=init.sql
+
+  - name: postgresql-config
+    files:
+      - postgresql.conf=postgresql.conf
+      - pg_hba.conf=pg_hba.conf
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+labels:
+  - includeSelectors: true
+    pairs:
+      app: postgres
