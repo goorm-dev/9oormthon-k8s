@@ -8,66 +8,131 @@
 ## 📦 Repository Structure
 
 ```
-.
-├── database
-│   ├── mariadb
-│   │   ├── base
-│   │   │   ├── init.sql
-│   │   │   ├── kustomization.yaml
-│   │   │   ├── secret.yaml
-│   │   │   ├── service.yaml
-│   │   │   └── statefulset.yaml
-│   │   ├── overlays
-│   │   │   └── kustomization.yaml
-│   │   └── README.md
-│   ├── mongodb
-│   │   ├── base
-│   │   │   ├── create_collction
-│   │   │   │   └── job.yaml
-│   │   │   ├── kustomization.yaml
-│   │   │   ├── secret.yaml
-│   │   │   ├── service.yaml
-│   │   │   └── statefulset.yaml
-│   │   ├── overlays
-│   │   │   └── kustomization.yaml
-│   │   └── README.md
-│   ├── mysql
-│   │   ├── base
-│   │   │   ├── init.sql
-│   │   │   ├── kustomization.yaml
-│   │   │   ├── secret.yaml
-│   │   │   ├── service.yaml
-│   │   │   └── statefulset.yaml
-│   │   ├── overlays
-│   │   │   └── kustomization.yaml
-│   │   └── README.md
-│   └── redis
-│       ├── base
-│       │   ├── kustomization.yaml
-│       │   ├── service.yaml
-│       │   └── statefulset.yaml
-│       └── README.md
-├── demo
-│   ├── deployment.yaml
-│   ├── ingress.yaml
-│   ├── kustomization.yaml
-│   └── service.yaml
-├── k8s
-│   ├── backend
-│   │   ├── backend.yaml
-│   │   ├── config
-│   │   │   └── backend-config.json
+├── 9oormthon-k8s
+│   ├── README.md
+│   ├── database
+│   │   ├── mariadb
+│   │   │   ├── README.md
+│   │   │   ├── base
+│   │   │   │   ├── init.sql
+│   │   │   │   ├── kustomization.yaml
+│   │   │   │   ├── secret.yaml
+│   │   │   │   ├── service.yaml
+│   │   │   │   └── statefulset.yaml
+│   │   │   └── overlays
+│   │   │       └── kustomization.yaml
+│   │   ├── mongodb
+│   │   │   ├── README.md
+│   │   │   ├── base
+│   │   │   │   ├── create_collction
+│   │   │   │   │   └── job.yaml
+│   │   │   │   ├── kustomization.yaml
+│   │   │   │   ├── secret.yaml
+│   │   │   │   ├── service.yaml
+│   │   │   │   └── statefulset.yaml
+│   │   │   └── overlays
+│   │   │       └── kustomization.yaml
+│   │   ├── mysql
+│   │   │   ├── README.md
+│   │   │   ├── base
+│   │   │   │   ├── init.sql
+│   │   │   │   ├── kustomization.yaml
+│   │   │   │   ├── secret.yaml
+│   │   │   │   ├── service.yaml
+│   │   │   │   └── statefulset.yaml
+│   │   │   └── overlays
+│   │   │       └── kustomization.yaml
+│   │   ├── postgres
+│   │   │   ├── README.md
+│   │   │   ├── base
+│   │   │   │   ├── init.sql
+│   │   │   │   ├── kustomization.yaml
+│   │   │   │   ├── pg_hba.conf
+│   │   │   │   ├── postgresql.conf
+│   │   │   │   ├── secret.yaml
+│   │   │   │   ├── service.yaml
+│   │   │   │   └── statefulset.yaml
+│   │   │   └── overlays
+│   │   │       └── kustomization.yaml
+│   │   └── redis
+│   │       ├── README.md
+│   │       └── base
+│   │           ├── kustomization.yaml
+│   │           ├── service.yaml
+│   │           └── statefulset.yaml
+│   ├── demo
+│   │   ├── deployment.yaml
 │   │   ├── ingress.yaml
 │   │   ├── kustomization.yaml
-│   │   └── README.md
-│   └── frontend
-│       ├── config
-│       │   └── frontend-config.json
-│       ├── frontend.yaml
-│       ├── ingress.yaml
-│       ├── kustomization.yaml
-│       └── README.md
-└── README.md
+│   │   └── service.yaml
+│   └── k8s
+│       ├── backend
+│       │   ├── README.md
+│       │   ├── backend.yaml
+│       │   ├── config
+│       │   │   └── backend-config.json
+│       │   ├── ingress.yaml
+│       │   └── kustomization.yaml
+│       └── frontend
+│           ├── README.md
+│           ├── config
+│           │   └── frontend-config.json
+│           ├── frontend.yaml
+│           ├── ingress.yaml
+│           └── kustomization.yaml
+└── kubernetes
+    ├── database
+    │   ├── mariadb
+    │   │   ├── README.md
+    │   │   ├── base
+    │   │   │   ├── init.sql
+    │   │   │   ├── kustomization.yaml
+    │   │   │   ├── secret.yaml
+    │   │   │   ├── service.yaml
+    │   │   │   └── statefulset.yaml
+    │   │   └── overlays
+    │   │       └── kustomization.yaml
+    │   ├── mongodb
+    │   │   ├── README.md
+    │   │   ├── base
+    │   │   │   ├── create_collction
+    │   │   │   │   └── job.yaml
+    │   │   │   ├── kustomization.yaml
+    │   │   │   ├── secret.yaml
+    │   │   │   ├── service.yaml
+    │   │   │   └── statefulset.yaml
+    │   │   └── overlays
+    │   │       └── kustomization.yaml
+    │   ├── mysql
+    │   │   ├── README.md
+    │   │   ├── base
+    │   │   │   ├── init.sql
+    │   │   │   ├── kustomization.yaml
+    │   │   │   ├── secret.yaml
+    │   │   │   ├── service.yaml
+    │   │   │   └── statefulset.yaml
+    │   │   └── overlays
+    │   │       └── kustomization.yaml
+    │   └── redis
+    │       ├── README.md
+    │       └── base
+    │           ├── kustomization.yaml
+    │           ├── service.yaml
+    │           └── statefulset.yaml
+    ├── demo
+    │   ├── deployment.yaml
+    │   ├── hpa.yaml
+    │   ├── ingress.yaml
+    │   ├── kustomization.yaml
+    │   └── service.yaml
+    └── k8s
+        ├── backend.yaml
+        ├── config
+        │   ├── backend-config.json
+        │   └── frontend-config.json
+        ├── frontend.yaml
+        ├── ingress.yaml
+        └── kustomization.yaml
 ```
 
 
